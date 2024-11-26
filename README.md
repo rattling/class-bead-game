@@ -25,7 +25,12 @@ python casino/main.py
 
 # Roadmap: Class Bead Game
 
+The vision for Class Bead Game is to create a casino-style game that combines elements of dice games, card games, and simulations. The project aims to provide an interactive and educational experience for players, as well as insights into game analytics and AI strategies.
+
+The learning objective for me and anyone who wants to contribute is to build a full-stack application from scratch, eschewing the use of frameworks and libraries to understand the underlying concepts and challenges involved in software development and data science.
+
 This roadmap outlines the phases for developing the Class Bead Game project, starting with core functionality and progressively adding features like simulations, analytics, and deployment. Each phase builds on the previous to create a fully functional and scalable system.
+
 
 ## **Phase 1: Core Game Framework**
 - [ ] Build foundational game components:
