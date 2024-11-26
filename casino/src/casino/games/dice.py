@@ -40,9 +40,6 @@ class Game:
         dice = self._create_dice(num_dice, sides, loads)
         self.cup = Cup(dice)
 
-        sides = sides or [6] * num_dice
-        loads = loads or [None] * num_dice
-
     def _create_dice(self, num_dice, sides, loads):
         sides = sides or [6] * num_dice
         loads = loads or [None] * num_dice
