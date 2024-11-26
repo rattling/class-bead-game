@@ -7,9 +7,9 @@ This roadmap outlines the phases for developing the Class Bead Game project, sta
 
 ## **Phase 1: Core Game Framework**
 - [ ] Build foundational game components:
-  - [ ] Create `MSDie` class for dice rolls.
-  - [ ] Create `Cup` class for managing multiple dice.
-  - [ ] Create `Game` class to handle gameplay.
+  - [x] Create `MSDie` class for dice rolls.
+  - [x] Create `Cup` class for managing multiple dice.
+  - [x] Create `Game` class to handle gameplay.
   - [ ] Write a basic CLI for interacting with the game.
 - [ ] Implement scoring system:
   - [ ] Define scoring patterns (e.g., pairs, straights).
