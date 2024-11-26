@@ -31,11 +31,6 @@ The learning objective for me and anyone who wants to contribute is to build a f
 
 This roadmap outlines the phases for developing the Class Bead Game project, starting with core functionality and progressively adding features like simulations, analytics, and deployment. Each phase builds on the previous to create a fully functional and scalable system.
 
-## Contributors
-
-For now, just fork the repo and have some fun.  Once I have some basics laid around architecture, deployment, testing and what-not, I'll open this up to contributions. 
-So watch this space and looking forward to your collaboration very soon!
-
 
 ## **Phase 1: Core Game Framework**
 - [ ] Build foundational game components:
@@ -123,3 +118,8 @@ So watch this space and looking forward to your collaboration very soon!
   - [ ] Improve the analytics layer with machine learning.
   - [ ] Enhance the frontend with modern frameworks like React or Vue.
   - [ ] Scale up deployment for real-world use cases.
+     
+# Contributors
+
+For now, just fork the repo and have some fun.  Once I have some basics laid around architecture, deployment, testing and what-not, I'll open this up to contributions. 
+So watch this space and looking forward to collaborating with you very shortly.
