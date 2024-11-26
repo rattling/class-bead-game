@@ -23,29 +23,29 @@ class MSDie:
 class Cup:
     def __init__(
         self,
-        dices,
-        num_dices=3,
+        dice,
+        num_dice=3,
     ):
-        self.dices = dices or [MSDie() for _ in range(num_dices)]
+        self.dice = dice or [MSDie() for _ in range(num_dice)]
 
     def shake(self):
-        return sum(dice.roll() for dice in self.dices)
+        return sum(die.roll() for die in self.dice)
 
 
 class Game:
-    def __init__(self, num_dices, sides=None, loads=None):
-        # Ensure num_dices has a valid value
-        if num_dices is None:
-            raise ValueError("Please provide value for num_dices")
-        dices = self._create_dice(num_dices, sides, loads)
-        self.cup = Cup(dices)
+    def __init__(self, num_dice, sides=None, loads=None):
+        # Ensure num_dice has a valid value
+        if num_dice is None:
+            raise ValueError("Please provide value for num_dice")
+        dice = self._create_dice(num_dice, sides, loads)
+        self.cup = Cup(dice)
 
-        sides = sides or [6] * num_dices
-        loads = loads or [None] * num_dices
+        sides = sides or [6] * num_dice
+        loads = loads or [None] * num_dice
 
-    def _create_dice(self, num_dices, sides, loads):
-        sides = sides or [6] * num_dices
-        loads = loads or [None] * num_dices
+    def _create_dice(self, num_dice, sides, loads):
+        sides = sides or [6] * num_dice
+        loads = loads or [None] * num_dice
         return [
             MSDie(sides=s, loaded=l)
             for s, l in zip_longest(sides, loads, fillvalue=None)
@@ -66,23 +66,23 @@ def test_dice_client():
 
     # 2. Shake a cup
     # Mixed numeber of sides
-    print("Now shake a cup of dices")
-    cup = Cup(num_dices=3, dices=None)
+    print("Now shake a cup of dice")
+    cup = Cup(num_dice=3, dice=None)
     print(cup.shake())
 
     # 3. Play a game
-    print("Lets play a game of 5 dices")
-    game = Game(num_dices=5)
+    print("Lets play a game of 5 dice")
+    game = Game(num_dice=5)
     print(game.play())
 
     # 3. Play a game with different size dice
-    print("Lets play a more interesing game - 5 dices of different sizes")
-    game = Game(num_dices=5, sides=[6, 5, 4, 3, 2])
+    print("Lets play a more interesing game - 5 dice of different sizes")
+    game = Game(num_dice=5, sides=[6, 5, 4, 3, 2])
     print(game.play())
 
     # 4. Play a game with differently weighted dice
-    print("Lets play a more interesing game - 5 dices of different sizes and weights")
-    game = Game(num_dices=5, sides=[6, 5, 4, 3, 2], loads=[1, 2, 3, 2, 1])
+    print("Lets play a more interesing game - 5 dice of different sizes and weights")
+    game = Game(num_dice=5, sides=[6, 5, 4, 3, 2], loads=[1, 2, 3, 2, 1])
     print(game.play())
 
 

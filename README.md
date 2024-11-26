@@ -1,6 +1,28 @@
 # class-bead-game
 The game of game of games
 
+# Development Setup
+
+1. Create a 3.11 pipenv environment and install the dependencies:
+
+```bash
+pipenv install
+pipenv shell
+```
+2. Install the casino package in editable mode:
+
+NOTE: keeping our package outside of Pipfile to ease deployment later
+
+```bash
+pip install -e .
+```
+3. Run the game main menu:
+
+```bash
+python casino/main.py
+```
+
+
 # Roadmap: Class Bead Game
 
 This roadmap outlines the phases for developing the Class Bead Game project, starting with core functionality and progressively adding features like simulations, analytics, and deployment. Each phase builds on the previous to create a fully functional and scalable system.
