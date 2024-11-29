@@ -52,13 +52,16 @@ Lets build the casino as a simple web application, simulate players with agents 
   - [ ] Use sorting algorithms for detecting sequences.
 - [ ] Write unit tests for core components.
 
-## **Phase 2: Multiple Games and Management**
-## **Phase 3: User Experience Enhancements**
-## **Phase 4: Simulation Framework**
-## **Phase 5: Analytics and Insights**
-## **Phase 6: Backend Framework**
-## **Phase 7: Simple Web UI**
-## **Phase 8: Deployment**
+**Phase 2: Multiple Games and Management**  
+**Phase 3: User Experience Enhancements**  
+**Phase 4: Simulation Framework**  
+**Phase 5: Analytics and Insights**  
+**Phase 6: Backend Framework**  
+**Phase 7: Simple Web UI**  
+**Phase 8: Deployment**  
+
+## Epoch 2: Beating the Casino/Beyond the Casino?
+Some of the crazy stuff we flagged in the vision above.
 
 # For Learners
 
