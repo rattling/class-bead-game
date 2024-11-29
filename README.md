@@ -69,7 +69,7 @@ You may not want to make contributions to the repository yet, that's fine. It's 
 
 You might want to do a basic Python course or two first. This repo will support early late beginner/early intermediate Python developer.
 
-## Prequisites
+## Prerequisites
 - Basic Python programming
 - Basic object-oriented programming
 - Basic Git and GitHub
