@@ -93,13 +93,14 @@ For example, checkout  e1p1m1_blank_slate to get the challenge for e1p1m2_projec
    git checkout <tag-name>
    ```
 
+### Phase 1 Tags - Core Game Framework
 
-| Phase | Tag Name                | Description                                  | Learnings
-|-------|-------------------------|----------------------------------------------|----------------------------------------------------|
-| 1     | `e1p1m1_blank_slate`    | The starting point, with minimal setup.      | Fork a repo, run it's test script, set up IDE      |
-| 1     | `e1p1m2_project_setup`  | Basic project structure and setup.           | Setup the repo folders, env & application package |
-| 1     | `e1p1m3_die_game_basic` | Basic `Die` class with rolling functionality.| Basic, working class structure and informal test |
-| 1     | `e1p1m4_die_game_varying` | Enhanced `Die` with custom sides and multiple rolls. | Factory pattern, list comprehension, generators |
+| Tag Name                | Description                                  | Learnings
+|-------------------------|----------------------------------------------|----------------------------------------------------|
+| `e1p1m1_blank_slate`    | The starting point, with minimal setup.      | Fork a repo, run it's test script, set up IDE      |
+| `e1p1m2_project_setup`  | Basic project structure and setup.           | Setup the repo folders, env & application package |
+| `e1p1m3_die_game_basic` | Basic `Die` class with rolling functionality.| Basic, working class structure and informal test |
+| `e1p1m4_die_game_varying` | Enhanced `Die` with custom sides and multiple rolls. | Factory pattern, list comprehension, generators |
 
 ---
 
