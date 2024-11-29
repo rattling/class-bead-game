@@ -86,18 +86,20 @@ There are many routes, but you can get all this for free online with w3schools, 
 
 Fork the repository and clone it to your local machine. If you want to complete any milestone code, just pull the previous milestone tag and start from there. You will find a next_milestone_challenge.md file in the milestone tag with a challenge to complete. You can compare your solution to the next milestone tag.
 
+For example, checkout  e1p1m1_blank_slate to get the challenge for e1p1m2_project_setup.
+
 **Checkout the Tag for a Milestone:**
    ```bash
    git checkout <tag-name>
    ```
 
 
-| Phase | Tag Name                | Description                                  |
-|-------|-------------------------|----------------------------------------------|
-| 1     | `e1p1m1_blank_slate`    | The starting point, with minimal setup.      |
-| 1     | `e1p1m2_project_setup`  | Basic project structure and setup.           |
-| 1     | `e1p1m3_die_game_basic` | Basic `Die` class with rolling functionality.|
-| 1     | `e1p1m4_die_game_varying` | Enhanced `Die` with custom sides and multiple rolls. |
+| Phase | Tag Name                | Description                                  | Learnings
+|-------|-------------------------|----------------------------------------------|----------------------------------------------------|
+| 1     | `e1p1m1_blank_slate`    | The starting point, with minimal setup.      | Fork a repo, run it's test script, set up IDE      |
+| 1     | `e1p1m2_project_setup`  | Basic project structure and setup.           | Setup the repo folders, env & application package |
+| 1     | `e1p1m3_die_game_basic` | Basic `Die` class with rolling functionality.| Basic, working class structure and informal test |
+| 1     | `e1p1m4_die_game_varying` | Enhanced `Die` with custom sides and multiple rolls. | Factory pattern, list comprehension, generators |
 
 ---
 
