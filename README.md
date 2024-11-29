@@ -1,5 +1,13 @@
 # class-bead-game
-The game of game of games
+The game of game of games...
+
+OK, what are the games? We will start with casino style games of chance like cards and roulette and evolve team games, games of strategy and even real-world games like prediction markets, 
+
+What about the "game of games?" This is the game of creating games. For those who like this sort of thing, we will use the Class Bead Game to practice technical disciplines such as software engineering, data science, AI and behavioural sciences and gain mastery over them.
+
+Fine, how about the "game of game of games?". Life is full of games and we are playing inside of games all the time, sometimes unwittingly. The Class Bead Game will be different. It will be fully transparent. We will know the rules, the odds, the strategies and the outcomes. We will learn how we play the games of life and how we can play them better.
+
+If you don't want to look under the hood, that's it. Check out the Class Bead Game, coming soon. If you want to look under the hood and tinker, read on...
 
 # Development Setup
 
@@ -23,16 +31,13 @@ python casino/main.py
 ```
 
 
-# Roadmap: Class Bead Game
+# Roadmap For Developers
+We will eschew the use of external libraries as much as possible so that we can learn fundamentals. We will relax this when necessary or when we have already covered those topics in earlier versions.
 
-The vision for Class Bead Game is to create a casino-style game that combines elements of dice games, card games, and simulations. The project aims to provide an interactive and educational experience for players, as well as insights into game analytics and AI strategies.
+## Epoch 1: The Casino
+Lets build the casino as a simple web application, simulate players with agents and run the games. We may surface some rudimentary insights for players to learn from. These milestones might move around a little as we learn more about the problem space.
 
-The learning objective for me and anyone who wants to contribute is to build a full-stack application from scratch, eschewing the use of frameworks and libraries to understand the underlying concepts and challenges involved in software development and data science.
-
-This roadmap outlines the phases for developing the Class Bead Game project, starting with core functionality and progressively adding features like simulations, analytics, and deployment. Each phase builds on the previous to create a fully functional and scalable system.
-
-
-## **Phase 1: Core Game Framework**
+### **Phase 1: Core Game Framework**
 - [ ] Build foundational game components:
   - [x] Create `MSDie` class for dice rolls.
   - [x] Create `Cup` class for managing multiple dice.
@@ -48,73 +53,49 @@ This roadmap outlines the phases for developing the Class Bead Game project, sta
 - [ ] Write unit tests for core components.
 
 ## **Phase 2: Multiple Games and Management**
-- [ ] Add additional games to the casino:
-  - [ ] Extend the dice game with advanced rules (e.g., rerolls).
-  - [ ] Add a second game (e.g., blackjack or card-based).
-- [ ] Build a `CasinoManager`:
-  - [ ] Manage multiple games in a session.
-  - [ ] Track player profiles and sessions.
-  - [ ] Record results for game history.
-- [ ] Enhance CLI:
-  - [ ] Add menus for selecting games and players.
-  - [ ] Allow saving/loading of game sessions.
-
 ## **Phase 3: User Experience Enhancements**
-- [ ] Improve the CLI experience:
-  - [ ] Add navigation for game options and stats.
-  - [ ] Format output for better readability.
-  - [ ] Handle errors and invalid inputs gracefully.
-- [ ] Add persistence:
-  - [ ] Save player profiles and results to a file.
-  - [ ] Reload data at the start of a session.
-
 ## **Phase 4: Simulation Framework**
-- [ ] Introduce agent-based simulations:
-  - [ ] Create AI players with configurable behaviors:
-    - [ ] Risk-averse players.
-    - [ ] Risk-seeking players.
-  - [ ] Simulate games to build a large history of gameplay data.
-- [ ] Focus on scalability:
-  - [ ] Simulate thousands of games in batches.
-  - [ ] Store results efficiently for analysis.
-
 ## **Phase 5: Analytics and Insights**
-- [ ] Build an analytics layer:
-  - [ ] Analyze game history for patterns:
-    - [ ] Common dice rolls.
-    - [ ] Win/loss ratios.
-    - [ ] Player tendencies (e.g., cautious vs. aggressive).
-  - [ ] Generate statistical reports for key metrics.
-- [ ] Implement visualizations:
-  - [ ] Create charts for dice probabilities, player stats, etc.
-  - [ ] Export results to plain text, JSON, or simple visual formats.
-
 ## **Phase 6: Backend Framework**
-- [ ] Develop a minimal FastAPI-like framework:
-  - [ ] Map routes to Python functions.
-  - [ ] Handle request parsing and validation.
-  - [ ] Return responses in JSON or HTML formats.
-- [ ] Keep it lightweight and modular for easy integration.
-
 ## **Phase 7: Simple Web UI**
-- [ ] Build a browser-based UI:
-  - [ ] Serve static HTML/CSS files using Python.
-  - [ ] Add vanilla JavaScript for interactivity (e.g., dice roll updates).
-  - [ ] Display leaderboards and player stats dynamically.
-- [ ] Add basic routing for UI pages (e.g., homepage, game stats).
-
 ## **Phase 8: Deployment**
-- [ ] Package and deploy the application:
-  - [ ] Host the backend on a cloud platform (e.g., AWS, Heroku).
-  - [ ] Serve the web UI alongside the backend.
-  - [ ] Add CI/CD pipelines for automated testing and deployment.
-- [ ] Ensure the system is scalable:
-  - [ ] Optimize for performance under larger workloads.
-  - [ ] Monitor and debug any deployment issues.
 
-## **Beyond Phase 8**
-- [ ] Upgrade any part of the system:
-  - [ ] Add new games to the casino.
-  - [ ] Improve the analytics layer with machine learning.
-  - [ ] Enhance the frontend with modern frameworks like React or Vue.
-  - [ ] Scale up deployment for real-world use cases.
+# For Learners
+
+You may not want to make contributions to the repository yet, that's fine. It's also a learning tool. You can pull the tagged commits below to take a challenge and then compre it to the tag for the finished article. There will also be youtube videos on some of the milestone tags with learnings and tips.
+
+You might want to do a basic Python course or two first. This repo will support early late beginner/early intermediate Python developer.
+
+## Prequisites
+- Basic Python programming
+- Basic object-oriented programming
+- Basic Git and GitHub
+- Basic command line usage
+- Python environments with pip and Pipenv
+
+There are many routes but here are some good options:
+
+
+## Get Going
+
+## Epoch 1 The Casino: Coding Challenges
+
+Fork the repository and clone it to your local machine. If you want to complete any milestone code, just pull the previous milestone tag and start from there. You will find a next_milestone_challenge.md file in the milestone tag with a challenge to complete. You can compare your solution to the next milestone tag.
+
+**Checkout the Tag for a Milestone:**
+   ```bash
+   git checkout <tag-name>
+   ```
+
+
+| Phase | Tag Name                | Description                                  |
+|-------|-------------------------|----------------------------------------------|
+| 1     | `e1p1m1_blank_slate`    | The starting point, with minimal setup.      |
+| 1     | `e1p1m2_project_setup`  | Basic project structure and setup.           |
+| 1     | `e1p1m3_die_game_basic` | Basic `Die` class with rolling functionality.|
+| 1     | `e1p1m4_die_game_varying` | Enhanced `Die` with custom sides and multiple rolls. |
+
+---
+
+
+
