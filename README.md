@@ -76,7 +76,8 @@ You might want to do a basic Python course or two first. This repo will support 
 - Basic command line usage
 - Python environments with pip and Pipenv
 
-There are many routes but here are some good options:
+There are many routes, but you can get all this for free online with w3schools, freeCodeCamp, Codecademy (free tier), Real Python tutorials, YouTube beginner courses or by following Python’s official documentation. There are some great paid options too with quality teaching.
+
 
 
 ## Get Going
