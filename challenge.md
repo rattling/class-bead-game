@@ -1,4 +1,1 @@
-1. Set up the repository folder structure including casino and other top level folders.
-2. Set up the Pipenv environment.
-3. Set up the casino application package with some subfolders, an example module with an import, an entry script and an informal test.
-4. Test out the package by running the entry script.
+1. Design a dice game for a list of players that will be played in rounds. Each round, the players will roll a dice and the player with the highest number wins the round. The game ends when a player wins a certain number of rounds. The game should be able to handle any number of players and any number of rounds. The game should also be able to handle ties. The game should output the winner of each round and the overall winner of the game. The game should also output the number of rounds won by each player. The game should be implemented in OOP style Python.
