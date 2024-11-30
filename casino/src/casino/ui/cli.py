@@ -1,0 +1,1 @@
+print("Casino is open")
