@@ -29,7 +29,7 @@ python casino/main.py
 ```
 
 # Roadmap For Developers
-We will mostly create functionalitry from scratch for learning and transparency. We may use external packages later e.g. for web stuff.
+We will sometimes code from scratch rather than use an external package for both transparency and learning. Mileage will vary. I don't fancy recreating Matplotlib!
 
 ## Epoch 1: The Casino
 Lets build the casino as a simple web application with start on agents, simulation and analytics.
