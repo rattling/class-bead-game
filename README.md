@@ -95,7 +95,7 @@ For example, checkout  e1p1m1_blank_slate to get the challenge for e1p1m2_projec
 | `e1p1m1_blank_slate`    | The starting point, with minimal setup.      | Fork a repo, run it's test script, set up IDE      |
 | `e1p1m2_project_setup`  | Basic project structure and setup.           | Setup the repo folders, env & application package |
 | `e1p1m3_die_game_basic` | Basic `Die` class with rolling functionality & rounds| Basic, working class structure and informal test,  list comprehension, generators  |
-| `e1p1m4_die_game_varying` | Enhanced `Die` with custom sides and multiple rolls. Basic CLI | Factory pattern, validation, type hints, functional programming, annotations, basic CLI|
+| `e1p1m4_die_game_varying` | Enhanced `Die` with custom sides and multiple rolls. Basic CLI | OOP single responsibility, functional programming, typehints, a little maths |
 
 ---
 
