@@ -1,143 +1,207 @@
 import random
+from typing import List, Dict, Callable
+from dataclasses import dataclass
+from abc import ABC, abstractmethod
 
-from casino.collection_utils import find_winners
 
-VALID_SIDES = [4, 6, 8, 10, 20]
+class GameRules(ABC):
+    """
+    Abstract base class for game-specific rules.
+    """
+
+    @abstractmethod
+    def calculate_score(self, dice: List[int]) -> int:
+        """
+        Calculate score for a roll of dice.
+        """
+        pass
+
+    @abstractmethod
+    def validate_move(self, dice: List[int], banked_dice: List[int]) -> bool:
+        """
+        Validate whether the move (banking dice) is legal.
+        """
+        pass
+
+    @abstractmethod
+    def has_scoring_dice(self, dice: List[int]) -> bool:
+        """
+        Check if there are any scoring dice in the roll.
+        """
+        pass
+
+    @abstractmethod
+    def should_continue(self, player_score: int, target_score: int) -> bool:
+        """
+        Determine if the player can or should continue their turn.
+        """
+        pass
+
+
+class FarkleRules(GameRules):
+    """
+    Rules specific to Farkle.
+    """
+
+    def calculate_score(self, dice: List[int]) -> int:
+        print(f"Calculating score for Farkle: {dice}")
+        # Dummy scoring logic for now:
+        return dice.count(1) * 100 + dice.count(5) * 50  # Example scoring
+
+    def validate_move(self, dice: List[int], banked_dice: List[int]) -> bool:
+        print(
+            f"Validating Farkle move with dice: {dice}, banked: {banked_dice}"
+        )
+        return True  # Replace with real validation.
+
+    def has_scoring_dice(self, dice: List[int]) -> bool:
+        # Check if there are any scoring dice (1s or 5s for simplicity)
+        return 1 in dice or 5 in dice
+
+    def should_continue(self, player_score: int, target_score: int) -> bool:
+        # Check if the player has reached the target or wants to continue.
+        return player_score < target_score
+
+
+class PigRules(GameRules):
+    """
+    Rules specific to Pig.
+    """
+
+    def calculate_score(self, dice: List[int]) -> int:
+        print(f"Calculating score for Pig: {dice}")
+        if 1 in dice:
+            return 0  # Pig-specific penalty for rolling a 1.
+        return sum(dice)
+
+    def validate_move(self, dice: List[int], banked_dice: List[int]) -> bool:
+        return True
+
+    def has_scoring_dice(self, dice: List[int]) -> bool:
+        return 1 not in dice
+
+    def should_continue(self, player_score: int, target_score: int) -> bool:
+        return player_score < target_score
 
 
 class Die:
-    """
-    Represents a die for rolling.
-
-    Valid number of sides:
-    - 4: Tetrahedron (4)
-    - 5: Triangular Prism (5)
-    - 6: Cube (6)
-    - 8: Octahedron (8)
-    - 10: Pentagonal trapezohedron (10)
-    - 20: Icosahedron (20)
-
-    For invalid inputs, an error will be raised.
-    """
-
-    def __init__(self, sides=6, biased_side=None, bias_points=1):
-        if sides not in VALID_SIDES:
-            raise ValueError(
-                f"Invalid number of sides: {sides}. "
-                f"Valid options are: {', '.join(map(str, VALID_SIDES))}. "
-                "Only fair dice shapes are supported."
-            )
-        self.sides = sides
-        bias_perc = bias_points / 100
-
-        self.weights = self._calculate_weights(sides, biased_side, bias_perc)
-
-    def _calculate_weights(self, sides, biased_side, bias_perc):
-        """
-        Calculate the weights for each side of the die.
-
-        Prove that non-biased sides equal 1 - bias_perc / n:
-            n: number of sides
-            b: bias percentage
-            x: weight for non biased sides
-
-            x (n-1) + x + b = 1
-            nx - x + x + b = 1
-            nx = 1 - b
-            x = (1 - b)/n
-
-        Normalize the weights to sum to 1 in case of rounding errors.
-
-        """
-        if biased_side:
-            if 1 <= biased_side <= sides:
-
-                standard_weight = (1 - bias_perc) / sides
-                weights = [standard_weight] * sides
-                weights[biased_side - 1] = standard_weight + bias_perc
-            else:
-                raise ValueError("Bias must be between 1 and the number of sides.")
-        else:
-            weights = [1 / sides] * sides
-
-        # Normalize weights to ensure they sum to 1
-        total = sum(weights)
-        weights = [round(w * 1 / total, 2) for w in weights]
-
-        # Adjust the last element to fix any rounding discrepancy
-        weights[-1] += 1 - sum(weights)
-
-        assert sum(weights) == 1
-
-        return weights
-
-    def roll(self):
-        chosen_index = random.choices(range(len(self.weights)), weights=self.weights)[0]
-        return chosen_index + 1
+    def roll(self) -> int:
+        return random.randint(1, 6)
 
 
 class Cup:
-    def __init__(self, dice=None, num_dice=3):
-        if dice is None:
-            self.dice = [Die() for _ in range(num_dice)]
-        else:
-            self.dice = dice
+    def __init__(self, num_dice: int):
+        self.dice = [Die() for _ in range(num_dice)]
 
-    def shake(self):
-        return sum(die.roll() for die in self.dice)
+    def roll(self) -> List[int]:
+        return [die.roll() for die in self.dice]
 
 
 class Player:
-    def __init__(self, name):
+    def __init__(self, name: str):
         self.name = name
-        self.round_score = 0
-        self.game_score = 0
 
-    def play_turn(self, cup):
-        return cup.shake()
+    def bank_dice(self, dice: List[int], rules: GameRules) -> List[int]:
+        print(f"{self.name}, your dice: {dice}")
+        indices = input(
+            "Enter indices of dice to bank (space-separated): "
+        ).split()
+        return [dice[int(i)] for i in indices]
+
+    def continue_rolling(self) -> bool:
+        decision = input("Do you want to roll again? (y/n): ").lower()
+        return decision == "y"
 
 
+class Agent(Player):
+    def __init__(
+        self, name: str, strategy: Callable[[List[int], GameRules], List[int]]
+    ):
+        super().__init__(name)
+        self.strategy = strategy
+
+    def bank_dice(self, dice: List[int], rules: GameRules) -> List[int]:
+        return self.strategy(dice, rules)
+
+    def continue_rolling(self) -> bool:
+        return False  # Always stops after the first roll
+
+
+@dataclass
 class Game:
-    def __init__(self, players, cup=None, num_dice=3, rounds=1):
-        self.players = [Player(name) for name in players]
-        self.cup = cup or Cup(num_dice=num_dice)
-        self.rounds = rounds
+    players: List[Player]
+    num_dice: int
+    target_score: int
+    rules: GameRules
+
+    def __post_init__(self):
+        self.scores = {player.name: 0 for player in self.players}
+        self.cup = Cup(self.num_dice)
 
     def play(self):
-        print("Let's play!\n")
-        for round in range(self.rounds):
-            print(f"\nRound {round+1}. Let's go!")
+        print(f"Starting {self.rules.__class__.__name__}!")
+        while not self.is_game_over():
             for player in self.players:
-                player.round_score = player.play_turn(self.cup)
-            round_winners = find_winners(self.players, lambda p: p.round_score)
-            for winner in round_winners:
-                print(f"Player {winner.name} is a round winner!")
-                winner.game_score += 1
+                self.play_turn(player)
+        self.declare_winner()
 
-        game_winners = find_winners(self.players, lambda p: p.game_score)
-        for winner in game_winners:
-            print(f"\nPlayer {winner.name} is a game winner!")
+    def play_turn(self, player: Player):
+        print(
+            f"\n{player.name}'s turn! Current score: {self.scores[player.name]}"
+        )
+        banked_score = 0
+        num_dice = self.num_dice
 
-    def _create_fair_cup(self, num_dice):
-        return Cup(num_dice=num_dice)
+        while True:
+            dice = self.cup.roll()
+            print(f"Dice rolled: {dice}")
+
+            if not self.rules.has_scoring_dice(dice):
+                print(f"{player.name} FARKLED! No points this turn.")
+                banked_score = 0
+                break
+
+            banked_dice = player.bank_dice(dice, self.rules)
+            banked_score += self.rules.calculate_score(banked_dice)
+            num_dice -= len(banked_dice)
+
+            print(f"{player.name} banked {banked_score} points.")
+            if num_dice == 0:
+                print(f"Hot dice! {player.name} rolls all dice again.")
+                num_dice = self.num_dice
+
+            if not self.rules.should_continue(
+                self.scores[player.name] + banked_score, self.target_score
+            ):
+                break
+
+        self.scores[player.name] += banked_score
+        print(f"{player.name}'s total score: {self.scores[player.name]}")
+
+    def is_game_over(self) -> bool:
+        return any(
+            score >= self.target_score for score in self.scores.values()
+        )
+
+    def declare_winner(self):
+        winner = max(self.scores, key=self.scores.get)
+        print(f"Game over! {winner} won with {self.scores[winner]} points!")
+
+
+def farkle_strategy(dice: List[int], rules: GameRules) -> List[int]:
+    return [die for die in dice if die == 1 or die == 5]
 
 
 if __name__ == "__main__":
+    human_player = Player(name="Alice")
+    farkle_agent = Agent(name="Bob", strategy=farkle_strategy)
+    farkle_agent2 = Agent(name="Schmoo", strategy=farkle_strategy)
 
-    print("\nGame1 is on!\n")
-    game1 = Game(
-        players=["computer", "Mike", "Anne"],
-        num_dice=3,
-        rounds=6,
+    farkle_game = Game(
+        players=[farkle_agent, farkle_agent2],
+        num_dice=6,
+        target_score=1000,
+        rules=FarkleRules(),
     )
-    game1.play()
 
-    print("\nGame1 is on!\n")
-    dice = [Die(sides=6, biased_side=3), Die(sides=8, biased_side=8), Die()]
-    custom_cup = Cup(dice)
-    game2 = Game(
-        players=["computer", "Mike", "Anne"],
-        cup=custom_cup,
-        rounds=6,
-    )
-    game2.play()
+    farkle_game.play()
